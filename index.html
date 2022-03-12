@@ -29,7 +29,62 @@
             </form>
         </div>
     </div>
-<script src="js/persona.js"></script>
-<script src="js/app.js"></script>
+    <script>
+
+        /* Clase de personas  */
+        class Persona{
+    constructor(nombre, apellido){
+        this._nombre = nombre;
+        this._apellido = apellido;
+    }
+
+    get nombre(){
+        return this._nombre
+    }
+    set nombre (nombre){
+        this._nombre = nombre;
+    }
+    get apellido(){
+        return this._apellido;
+    }
+    set apellido (apellido){
+        this._apellido = apellido;
+    }
+}
+    /* js de la aplicación */
+    const personas = [
+
+];
+
+function mostrarPersonas(){
+    console.log("Se muestran personas");
+    let registros = '';
+    for (let persona of personas){
+        console.log(personas);
+        registros += `<li>${persona.nombre} ${persona.apellido}</li>`
+    }
+    document.getElementById("personas").innerHTML = registros;
+}
+
+function agregarPersonas (){
+    const formulario = document.forms['formulario'];
+    const nombre = formulario["nombre"];
+    const apellido = formulario["apellido"];
+
+    if(nombre.value != '' && apellido.value != ''){
+        const persona = new Persona (nombre.value, apellido.value);
+        console.log(persona);
+        personas.push(persona);
+        mostrarPersonas();
+    }else {
+        alert("No se pueden agregar elementos vacios")
+    }
+
+}
+/* final de la aplicación */
+    </script>
+    <!-- pese a que el llamado funciona bien en local, se agrega el codigo sobre el HTML para forzar el inicio el githubpages -->
+<!-- <script src="js/persona.js"></script>
+<script src="js/app.js"></script> -->
 </body>
 </html>
